@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RankWell — Recherche</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 52rem;
+        margin: 3rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: end;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.9rem;
+      }
+      input[type="search"] {
+        flex: 1 1 24rem;
+      }
+      ul {
+        padding-left: 1.25rem;
+      }
+      li {
+        margin-bottom: 1rem;
+      }
+      .meta {
+        color: #555;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>RankWell</h1>
+
+    <form method="get" action="/">
+      <label>
+        Requête
+        <input type="search" name="q" value="{{ query|default('') }}" required>
+      </label>
+      <label>
+        Poids BM25 (w)
+        <input
+          type="number"
+          name="w"
+          value="{{ weight|default(0.7) }}"
+          min="0"
+          max="1"
+          step="0.05"
+        >
+      </label>
+      <button type="submit">Rechercher</button>
+    </form>
+
+    {# TODO: Afficher le temps de réponse en millisecondes. #}
+    {# TODO: Afficher un message si aucun résultat. #}
+
+    {% if results %}
+      <ol>
+        {% for result in results %}
+          <li>
+            <a href="{{ result.url }}">{{ result.title|default(result.url) }}</a>
+            <div class="meta">
+              {{ result.url }}
+              {# TODO: Afficher le score final. #}
+            </div>
+            <p>{{ result.snippet|default('') }}</p>
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </body>
+</html>
