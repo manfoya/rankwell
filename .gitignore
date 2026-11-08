@@ -1,0 +1,30 @@
+# Environnements virtuels
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.eggs/
+
+# Outils
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build C++
+build/
+compile_commands.json
+
+# Données générées (on garde le dossier)
+data/*
+!data/.gitkeep
+
+# Secrets et logs
+.env
+*.log
