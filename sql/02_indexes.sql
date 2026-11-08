@@ -1,0 +1,11 @@
+-- 02_indexes.sql
+-- Index SQL séparés du schéma pour mesurer leur impact.
+--
+-- Ce fichier ne contient volontairement aucune instruction DDL.
+-- Écrire les CREATE INDEX puis conserver les DROP INDEX en commentaire
+-- pour comparer les performances avec et sans index.
+
+-- TODO: Ajouter un index B-Tree sur inverted_index(word) pour accélérer la recherche de mots.
+-- TODO: Ajouter un index sur pages(content_hash) pour la déduplication rapide.
+-- TODO: Ajouter un index sur links(target_id) pour analyser les liens entrants.
+-- TODO: Écrire aussi les commandes DROP INDEX correspondantes en commentaire pour tes tests de vitesse.
